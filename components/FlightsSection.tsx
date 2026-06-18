@@ -40,13 +40,7 @@ function FlightCard({ flight, index }: { flight: Flight; index: number }) {
       <div className="flex items-center gap-3 text-xs text-white/40 font-light">
         <span>{flight.airline}</span>
         <span className="text-white/15">·</span>
-        <span>
-          {new Date(flight.date).toLocaleDateString("tr-TR", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
-        </span>
+        <span>{flight.date}</span>
       </div>
 
       {/* Note */}

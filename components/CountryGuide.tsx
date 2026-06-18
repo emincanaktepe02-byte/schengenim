@@ -1,8 +1,17 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Clock, AlertCircle, ExternalLink, Search } from "lucide-react";
+import { ChevronDown, Clock, AlertCircle, ExternalLink, Search, Lightbulb } from "lucide-react";
 import { COUNTRIES } from "@/lib/data";
+
+const GENERAL_TIPS_2026 = [
+  { emoji: "⏰", title: "Doğru saatleri yakala", tip: "Boş randevu slotları genellikle sabah 08:00–09:00 ve gece 23:00–00:00'da çıkar. İptal edilen rezervasyonlar bu saatlerde sisteme döner." },
+  { emoji: "💶", title: "Toplam maliyet ~120€", tip: "2026 vize ücreti 90€ + VFS servis bedeli ~30€ = kişi başı yaklaşık 120€. Döviz kuru farkına dikkat edin." },
+  { emoji: "📅", title: "180 gün öncesinden başvurabilirsin", tip: "Schengen vize başvurusu seyahat tarihinden en fazla 180 gün önce yapılabilir. Popüler ülkeler için en erken tarihe randevu alın." },
+  { emoji: "🇬🇷", title: "Yunanistan en kolay randevu", tip: "2026'da Yunanistan, özellikle Ekim–Mart arası dönemde randevu bulmayı en kolaylaştıran Schengen ülkesidir. İtalya da kota artırdı." },
+  { emoji: "📋", title: "Kaskad kuralı — uzun vizeye geçiş", tip: "Kısa süreli vizeni uyumlu kullanırsan sıradaki başvuruda 6 aylık vize alabilirsin. Sonra sırayla 1 yıl → 3 yıl → 5 yıl." },
+  { emoji: "🏙️", title: "Alternatif merkez dene", tip: "İstanbul dışında Ankara ve İzmir'deki VFS merkezleri genellikle daha erken randevu sunuyor. Yakınlık şartı yoksa değerlendirin." },
+];
 
 function CountryCard({ country, index }: { country: typeof COUNTRIES[0]; index: number }) {
   const [open, setOpen] = useState(false);
@@ -167,6 +176,30 @@ export default function CountryGuide() {
                 className="w-full bg-white/[0.04] border border-white/8 rounded-full pl-8 pr-4 py-2.5 text-sm text-white/60 font-light placeholder-white/20 outline-none focus:border-white/20 transition-colors"
               />
             </div>
+          </div>
+        </motion.div>
+
+        {/* 2026 General Tips */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10"
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <Lightbulb size={13} className="text-white/30" />
+            <span className="text-xs text-white/30 uppercase tracking-wider font-light">2026 Genel İpuçları</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {GENERAL_TIPS_2026.map((t, i) => (
+              <div key={i} className="bg-[#202020] border border-white/5 rounded-[10px] p-5 flex gap-3">
+                <span className="text-lg shrink-0 mt-0.5">{t.emoji}</span>
+                <div>
+                  <p className="text-xs font-medium text-white/70 mb-1">{t.title}</p>
+                  <p className="text-xs text-white/35 font-light leading-relaxed">{t.tip}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 

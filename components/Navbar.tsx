@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { href: "#appointments", label: "Randevu Paylaşımları" },
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -28,9 +30,21 @@ export default function Navbar() {
       {/* Logo */}
       <Link href="/" className="flex items-center gap-3">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center">
-            <span className="text-[10px] font-medium text-white">S</span>
-          </div>
+          {!logoError ? (
+            <Image
+              src="/logo.png"
+              alt="SchengenPass"
+              width={28}
+              height={28}
+              className="object-contain"
+              onError={() => setLogoError(true)}
+              priority
+            />
+          ) : (
+            <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center">
+              <span className="text-[10px] font-medium text-white">S</span>
+            </div>
+          )}
           <span className="font-light text-white tracking-tight text-base">
             Schengen<span className="font-medium">Pass</span>
           </span>
