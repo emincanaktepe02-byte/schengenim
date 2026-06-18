@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SchengenPass — Vize Randevunuzu Otomatik Takip Edin",
+  title: "SchengenPass — Ücretsiz Schengen Vize Rehberi",
   description:
-    "VFS Global Türkiye merkezlerindeki 20 Schengen ülkesi randevularını 7/24 otomatik izler. Boşluk bulunduğu saniyede Telegram ile uyarır. Aracı firmalara binlerce lira vermeden vizeni al.",
-  keywords: "schengen vize randevu, vfs global türkiye, fransa vize randevu, hollanda vize, schengen otomasyonu",
+    "Schengen vize başvurusu için ücretsiz rehber. Randevu paylaşımları, uygun uçuş fırsatları ve 25 ülke için detaylı başvuru bilgileri. Bot yok, scraping yok.",
+  keywords: "schengen vize, schengen vize rehberi, vfs global türkiye, fransa vize, yunanistan vize randevu, uygun uçuş",
   openGraph: {
-    title: "SchengenPass — Schengen Vize Randevusu Bulucu",
-    description: "Aracı firmalara gerek yok. Otomatik sistem, boş randevuyu saniyeler içinde bulur.",
+    title: "SchengenPass — Ücretsiz Schengen Vize Rehberi",
+    description: "Randevu paylaşımları, ucuz uçuşlar ve 25 ülke başvuru rehberi. Tamamen ücretsiz.",
     type: "website",
   },
 };
@@ -24,7 +25,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-full bg-black">{children}</body>
+      <body className="min-h-full bg-black">
+        {children}
+        {/* Travelpayouts Drive — domain doğrulaması ve affiliate attribution */}
+        <Script
+          src="https://emrld.ltd/NTQxMjk0.js?t=541294"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
