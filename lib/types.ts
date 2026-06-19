@@ -14,6 +14,10 @@ export interface Country {
   requirements: string[];
   processingTime: string;
   avgWait: string;
+  bankRequirements: string;
+  rejectionReasons: string[];
+  coverGradient: [string, string];
+  cascadeFriendly?: boolean;
 }
 
 export interface Appointment {

@@ -22,6 +22,16 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport (6 ay geçerli)", "2 biyometrik fotoğraf", "Vize başvuru formu", "Seyahat sigortası (min. 30.000€)", "Uçuş rezervasyonu", "Otel rezervasyonu", "Banka ekstreleri (3 ay)", "Gelir belgesi"],
     processingTime: "10-15 iş günü",
     avgWait: "45-60 gün",
+    bankRequirements: "Son 3 aylık banka hesap özeti (mümkünse apostilli). Kişi başı günlük min. 100€ karşılığı TL + konaklama + bilet tutarı görünür olmalı. Ani büyük nakit girişlerinden kaçının — hesap geçmişinde düzenlilik aranır.",
+    rejectionReasons: [
+      "Banka bakiyesi yetersiz veya dönemde ani artış var → 3+ ay önceden düzenli yatırım yapın",
+      "Konaklama/uçuş rezervasyonu eksik ya da geçici değil → Onaylı rezervasyon belgesi sunun",
+      "Türkiye'deki bağ belgesi (iş sözleşmesi, tapu, kira) yetersiz → İşveren yazısı + mülk belgesi ekleyin",
+      "Seyahat amacı veya güzergahı inandırıcı değil → Gün gün seyahat planı hazırlayın",
+      "Pasaport geçerlilik süresi seyahat sonrası 3 aydan az → Pasaportu yenileyin",
+    ],
+    coverGradient: ["#002395", "#ED2939"],
+    cascadeFriendly: true,
   },
   {
     code: "che",
@@ -42,6 +52,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Biyometrik fotoğraf", "Sigorta", "Finansal belgeler (90 CHF/gün)", "İstihdam belgesi", "Konaklama rezervasyonu"],
     processingTime: "15 iş günü",
     avgWait: "30-50 gün",
+    bankRequirements: "Günlük 90 CHF (yaklaşık 100-110€) karşılığı finansal yeterlilik kanıtı zorunludur. Son 3 aylık banka özeti. İsviçre pahalı bir destinasyon; konaklama + ulaşım dahil toplam bütçe hesaplanmalı.",
+    rejectionReasons: [
+      "Günlük 90 CHF karşılığı yeterli bakiye kanıtlanamadı → Hesap özetinde rakamları netleştirin",
+      "AB dışı statü nedeniyle ek belgeler eksik → VFS'in İsviçre özel belgeler listesini inceleyin",
+      "Seyahat amacı belirsiz → Gün gün güzergah ve aktivite planı sunun",
+      "Konaklama belgesi yetersiz veya geçici → Kesinleştirilmiş otel rezervasyonu sunun",
+    ],
+    coverGradient: ["#CC0000", "#FFFFFF"],
+    cascadeFriendly: true,
   },
   {
     code: "nld",
@@ -62,6 +81,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Fotoğraf", "Sigorta", "Banka ekstresi", "Konaklama", "Uçuş rezervasyonu"],
     processingTime: "10-15 iş günü",
     avgWait: "40-55 gün",
+    bankRequirements: "Son 3 aylık eksiksiz banka özeti. Günlük yaklaşık 70-100€ karşılığı bakiye. Hollanda'nın belge incelemesi titizdir; hesap geçmişinde ani artış şüphe uyandırır. Mümkünse apostille veya banka imzalı resmi belge sunun.",
+    rejectionReasons: [
+      "Banka özeti düzensiz gelir veya ani artış gösteriyor → 3+ ay istikrarlı gelir akışı sağlayın",
+      "Apostille veya resmi tasdik eksik → Belgeleri noter onaylı sunun",
+      "Parmak izi için merkeze gelinmedi → Fiziksel randevu zorunludur",
+      "Giriş amacı belgesi (turizm/iş/aile) yetersiz → Amaca özel belgeler hazırlayın",
+    ],
+    coverGradient: ["#AE1C28", "#21468B"],
+    cascadeFriendly: true,
   },
   {
     code: "nor",
@@ -81,6 +109,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta (min. 30.000€)", "Konaklama belgesi", "Finansal kanıt", "Seyahat planı"],
     processingTime: "10-15 iş günü",
     avgWait: "35-50 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Norveç NOK kullanır ve pahalıdır; günlük 100€+ karşılığı bakiye zorunludur. Kuzey Işıkları veya doğa turizmi için ekstra aktivite bütçesi gösterilmesi faydalıdır.",
+    rejectionReasons: [
+      "Norveç'te konaklama belgesi detaysız veya onaysız → Kesinleşmiş rezervasyon sunun",
+      "Yaz sezonu için çok geç başvuru yapıldı → En az 3 ay önceden başvurun",
+      "Seyahat güzergahı ve aktivite planı belirsiz → Gün bazlı plan hazırlayın",
+      "Finansal yeterlilik Norveç maliyetleri için yetersiz → Bakiyeyi yükseltin",
+    ],
+    coverGradient: ["#EF2B2D", "#003680"],
+    cascadeFriendly: false,
   },
   {
     code: "swe",
@@ -100,6 +137,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport (orijinal)", "Biyometrik fotoğraf", "Sigorta", "Banka ekstreleri", "İstihdam belgesi"],
     processingTime: "15 iş günü",
     avgWait: "30-45 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Standart Schengen finansal kriterleri geçerli. Çok ülkeli tur planlanıyorsa birleşik bütçe sunun; her ülkedeki konaklama masrafları ayrı gösterilebilir.",
+    rejectionReasons: [
+      "Başvuru yanlış ülke konsolosluğuna yapıldı → En uzun konaklama ülkesini seçin",
+      "Orijinal pasaport yerine fotokopi sunuldu → Orijinal pasaport şarttır",
+      "Finansal belgeler yetersiz → Tüm banka hesaplarını belgeleyin",
+      "İsveç için biyometrik kaydı yok ve merkeze gelinmedi → Fiziksel başvuru zorunludur",
+    ],
+    coverGradient: ["#006AA7", "#FECC02"],
+    cascadeFriendly: true,
   },
   {
     code: "mlt",
@@ -119,6 +165,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "2 fotoğraf", "Sigorta", "Konaklama belgesi", "Banka ekstresi", "Gelir belgesi"],
     processingTime: "7-10 iş günü",
     avgWait: "15-25 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Malta görece uygun maliyetli; günlük 50-70€ karşılığı yeterlidir. İlk Schengen için ideal bir ülke — finansal gereksinimler makul düzeyde.",
+    rejectionReasons: [
+      "Yaz sezonunda geç randevu alındı → Haziran öncesi başvurun",
+      "Konaklama veya seyahat sigortası belgesi eksik → Tüm belgeleri eksiksiz sunun",
+      "Banka özeti güncel değil (3 aydan eski) → Güncel özet alın",
+    ],
+    coverGradient: ["#CF142B", "#FFFFFF"],
   },
   {
     code: "isl",
@@ -138,6 +191,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Seyahat planı", "Araç kiralama belgesi", "Finansal belgeler"],
     processingTime: "10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "İsveç Konsolosluğu kriterleri geçerli. İzlanda pahalı bir destinasyon; günlük 120-150€ karşılığı bakiye önerilir. Ring Road turu için araç kiralama ücreti de bütçeye eklenmelidir.",
+    rejectionReasons: [
+      "İsveç Konsolosluğu yerine yanlış başvuru yeri seçildi → VFS İsveç üzerinden başvurun",
+      "Ring Road veya araç kiralama planı sunulmadı → Kesinleştirilmiş araç rezervasyonu ekleyin",
+      "İzlanda maliyetleri için finansal yeterlilik düşük → Bakiyeyi artırın",
+    ],
+    coverGradient: ["#003897", "#DC1E35"],
   },
   {
     code: "est",
@@ -157,6 +217,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Fotoğraf", "Sigorta", "Konaklama", "Uçuş rezervasyonu"],
     processingTime: "5-10 iş günü",
     avgWait: "10-15 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Estonya ekonomik bir destinasyon; günlük 50-70€ karşılığı bakiye yeterlidir. İlk Schengen başvurusu için en kolay ülkelerden biri — red oranı düşük.",
+    rejectionReasons: [
+      "Temel belgeler (sigorta, konaklama) eksik → Eksiksiz paket hazırlayın",
+      "Seyahat amacı belirsiz → Gün bazlı aktivite planı ekleyin",
+      "Pasaport geçerliliği yetersiz → Seyahat sonrası 3 ay kalan pasaport gerekli",
+    ],
+    coverGradient: ["#0072CE", "#1B4F91"],
   },
   {
     code: "lva",
@@ -175,6 +242,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Finansal belgeler", "Konaklama", "İstihdam belgesi"],
     processingTime: "7-10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Riga uygun maliyetli; günlük 40-60€ karşılığı bakiye genellikle yeterlidir. İlk Schengen için ideal — Bask düşük, randevu kolay.",
+    rejectionReasons: [
+      "Konaklama belgesi eksik → Kesinleştirilmiş otel rezervasyonu sunun",
+      "İstihdam belgesi veya gelir kanıtı eksik → İşveren yazısı ekleyin",
+      "Finansal belgeler yetersiz → Tüm banka hesaplarını belgeleyin",
+    ],
+    coverGradient: ["#9E3039", "#FFFFFF"],
   },
   {
     code: "ltu",
@@ -193,6 +267,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Banka ekstresi (6 ay)", "Konaklama belgesi"],
     processingTime: "7-10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "Son 6 aylık banka özeti istenebilir (diğer ülkelerden uzun). Litvanya düşük maliyetli; günlük 40-60€ karşılığı yeterlidir. 6 aylık finansal geçmiş eksikse ret riski artar.",
+    rejectionReasons: [
+      "6 aylık banka özeti yetersiz veya sunulmadı → 6 aylık eksiksiz hesap özetini sunun",
+      "Çok şehirli tur için ulaşım planı eksik → Şehirlerarası ulaşım belgesi ekleyin",
+      "Konaklama belgesi eksik → Otel veya Airbnb rezervasyonu sunun",
+    ],
+    coverGradient: ["#FDB913", "#006A44"],
   },
   {
     code: "svn",
@@ -211,6 +292,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama", "Seyahat planı", "Finansal belgeler"],
     processingTime: "7-10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Standart Schengen kriterleri. Seyahat planı detaylı sunulursa finansal değerlendirme daha olumlu sonuçlanır.",
+    rejectionReasons: [
+      "Seyahat planı eksik veya belirsiz → Bled, Ljubljana, Piran için ayrı konaklama belgesi ekleyin",
+      "Konaklama belgesi yetersiz → Her destinasyon için ayrı rezervasyon sunun",
+      "Finansal yeterlilik kanıtı yetersiz → Banka özetini ve gelir belgesini birlikte sunun",
+    ],
+    coverGradient: ["#003DA5", "#00A651"],
   },
   {
     code: "hrv",
@@ -229,6 +317,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama belgesi", "Uçuş rezervasyonu", "Banka ekstresi"],
     processingTime: "10-15 iş günü",
     avgWait: "20-35 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Yaz sezonunda Dalmaçya kıyısı pahalı olabilir; bu dönem için günlük 100€+ karşılığı bakiye önerilir. Tekne/feribot turları planlanıyorsa bu masraflar da bütçede görünmeli.",
+    rejectionReasons: [
+      "2023 öncesi Hırvatistan vize deneyimi yanlış referans gösterildi → Schengen olarak başvurun",
+      "Yaz sezonunda çok geç başvuru → En az 3-4 ay önceden başvurun",
+      "Konaklama belgesi yetersiz → Her ada/şehir için ayrı rezervasyon ekleyin",
+    ],
+    coverGradient: ["#FF0000", "#0055A4"],
   },
   {
     code: "dnk",
@@ -247,6 +342,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Biyometrik fotoğraf", "Sigorta", "Finansal belgeler", "Konaklama"],
     processingTime: "10-15 iş günü",
     avgWait: "25-40 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Danimarka pahalı bir destinasyon; günlük 100-120€ karşılığı bakiye önerilir. Parmak izi için mutlaka merkeze fiziksel olarak gelinmeli.",
+    rejectionReasons: [
+      "Fiziksel başvuru yapılmadı, parmak izi kaydı eksik → Merkeze bizzat gidin",
+      "Danimarka maliyetleri için finansal yeterlilik düşük → Bakiyeyi artırın",
+      "Konaklama belgesi onaysız veya eksik → Oteller teyit belgesini sunun",
+    ],
+    coverGradient: ["#C60C30", "#FFFFFF"],
   },
   {
     code: "fin",
@@ -265,6 +367,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama", "Finansal belgeler"],
     processingTime: "10-15 iş günü",
     avgWait: "20-35 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Kuzey bölgeleri veya Lapland planlanıyorsa ek aktivite bütçesi ve rehberlik belgeleri gerekebilir. Günlük 80-100€ karşılığı önerilir.",
+    rejectionReasons: [
+      "Lapland aktivite planı (rehberlik, kamp) sunulmadı → Aktivite belgelerini ekleyin",
+      "Finansal yeterlilik yetersiz → Tüm hesapları belgeleyin",
+      "Sigorta Finlandiya'yı kapsamıyor → Schengen genelini kapsayan poliçe seçin",
+    ],
+    coverGradient: ["#003580", "#FFFFFF"],
   },
   {
     code: "aut",
@@ -283,6 +392,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama belgesi", "Banka ekstresi", "Uçuş rezervasyonu"],
     processingTime: "10-15 iş günü",
     avgWait: "30-45 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Viyana konaklaması pahalı olabilir; günlük 80-100€ karşılığı bakiye önerilir. Kaskad vize için uygun bir ülke — 2. başvuruda çok girişli talep edilebilir.",
+    rejectionReasons: [
+      "Anmeldung (kayıt) belgesi sunulmadı → Konakladığınız adresin kaydını sunun",
+      "Seyahat güzergahı belirsiz → Viyana dışı destinasyonlar için ayrı plan ekleyin",
+      "Finansal yeterlilik yetersiz → Viyana maliyetleri için bakiyeyi artırın",
+      "Pasaport geçerlilik süresi yetersiz → Seyahat sonrası 3 ay kalmalı",
+    ],
+    coverGradient: ["#ED2939", "#FFFFFF"],
+    cascadeFriendly: true,
   },
   {
     code: "bel",
@@ -301,6 +419,14 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Biyometrik fotoğraf", "Sigorta", "Finansal belgeler", "Konaklama"],
     processingTime: "15 iş günü",
     avgWait: "50-70 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Brüksel pahalıdır; günlük 100-120€ karşılığı bakiye önerilir. Randevu kıtlığı nedeniyle çok önceden başvurmak kritik önem taşır.",
+    rejectionReasons: [
+      "Randevu geç alındı, seyahat tarihine yetişmedi → 3-4 ay öncesinden harekete geçin",
+      "AB kurumu ziyareti için davet belgesi eksik → Ziyaret edilecek kurum davetiyesini sunun",
+      "Finansal yeterlilik yetersiz → Brüksel maliyetleri için bakiyeyi artırın",
+      "Belgeler eksik → VFS Belçika kontrol listesini eksiksiz tamamlayın",
+    ],
+    coverGradient: ["#000000", "#F9CC12"],
   },
   {
     code: "bgr",
@@ -319,6 +445,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama", "Finansal belgeler"],
     processingTime: "7-10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Bulgaristan ekonomik bir destinasyon; günlük 40-60€ karşılığı yeterlidir. Kara sınırı geçişi için farklı belgeler gerekebilir — hava yolu ile seyahat daha basit.",
+    rejectionReasons: [
+      "Kara sınırı geçişi için yanlış belge türü sunuldu → Hava/deniz yoluyla seyahat tercih edin",
+      "Konaklama belgesi eksik → Kesinleştirilmiş otel rezervasyonu sunun",
+      "Finansal yeterlilik çok düşük → Minimum gereksinimleri karşılayın",
+    ],
+    coverGradient: ["#00966E", "#D62612"],
   },
   {
     code: "lux",
@@ -337,6 +470,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama", "Finansal belgeler"],
     processingTime: "7-10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Çok ülkeli tur için birleşik bütçe belgesi sunulmalı. Lüksemburg pahalı olduğundan tüm tur için yeterli bütçe gösterilmeli.",
+    rejectionReasons: [
+      "Çok ülkeli tur bütçesi birleşik sunulmadı → Her ülke için ayrı masraf belgesi ekleyin",
+      "Konaklama belgesi yetersiz → Kesinleştirilmiş otel rezervasyonu sunun",
+      "Ana ziyaret ülkesi doğru seçilmedi → En uzun konaklama ülkesine başvurun",
+    ],
+    coverGradient: ["#EF3340", "#00A3E0"],
   },
   {
     code: "cze",
@@ -355,6 +495,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Banka ekstresi", "Konaklama", "Uçuş rezervasyonu"],
     processingTime: "10-15 iş günü",
     avgWait: "25-40 gün",
+    bankRequirements: "Son 3 aylık banka özeti (apostilleli önerilir). Prag popüler ve pahalı; günlük 80-100€ karşılığı bakiye önerilir. Apostille olmadan da kabul edilebilir ancak risk artar.",
+    rejectionReasons: [
+      "Yoğun dönemde geç randevu alındı → 2-3 ay öncesinden başvurun",
+      "Banka özeti apostille/tasdik içermiyor → Mümkünse apostille ekleyin",
+      "Seyahat planı yeterince detaylı değil → Prag dışı destinasyonlar için plan ekleyin",
+    ],
+    coverGradient: ["#D7141A", "#11457E"],
   },
   {
     code: "pol",
@@ -373,6 +520,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Sigorta", "Konaklama", "Finansal belgeler", "İstihdam belgesi"],
     processingTime: "10-15 iş günü",
     avgWait: "20-30 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Polonya ekonomik bir destinasyon; günlük 50-70€ karşılığı bakiye yeterlidir. Düzenli gelir belgesi önemli.",
+    rejectionReasons: [
+      "İstihdam belgesi veya gelir kanıtı eksik → İşveren yazısı + maaş dökümü sunun",
+      "Şehirlerarası ulaşım planı eksik → Kraków/Zakopane için ayrı ulaşım belgesi ekleyin",
+      "Konaklama belgesi eksik → Her destinasyon için rezervasyon sunun",
+    ],
+    coverGradient: ["#DC143C", "#FFFFFF"],
   },
   {
     code: "prt",
@@ -391,6 +545,14 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Fotoğraf", "Sigorta", "Konaklama", "Uçuş rezervasyonu", "Banka ekstresi", "Gelir belgesi"],
     processingTime: "10-15 iş günü",
     avgWait: "20-35 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Portekiz görece uygun maliyetli; günlük 60-80€ karşılığı bakiye genellikle yeterlidir. Schengen'in en esnek değerlendirme politikalarından biri.",
+    rejectionReasons: [
+      "Bölgesel konaklama belgesi eksik (Porto/Algarve planlanıyorsa) → Her bölge için ayrı rezervasyon sunun",
+      "Finansal yeterlilik yetersiz → Bakiye ve gelir belgesini birlikte sunun",
+      "Sigorta belgesi Portekiz'i kapsadığını açıkça belirtmiyor → Poliçe detayını gösterin",
+    ],
+    coverGradient: ["#006600", "#FF0000"],
+    cascadeFriendly: true,
   },
 
   // ── iDATA ─────────────────────────────────────────────────
@@ -414,6 +576,16 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport (seyahat sonrası 3 ay geçerli)", "2 biyometrik fotoğraf", "Başvuru formu", "Seyahat sigortası", "Uçuş & konaklama rezervasyonu", "Banka ekstresi (6 ay)", "Gelir belgesi / iş sözleşmesi", "Vergi levhası (serbest meslek)"],
     processingTime: "10-15 iş günü",
     avgWait: "40-70 gün",
+    bankRequirements: "Son 6 aylık banka özeti zorunlu (diğer Schengen ülkelerinden daha uzun). Günlük 45-50€ karşılığı TL + konaklama + uçuş masrafı görünür olmalı. ANİ BÜYÜK NAKİT GİRİŞİ KESİNLİKLE YASAK — şüphe uyandırır ve redde yol açar. Aylık düzenli maaş/gelir görünür olmalı.",
+    rejectionReasons: [
+      "6 aylık banka özetinde ani büyük para girişi var → Organik düzenli geliri belgeleyin",
+      "İş sözleşmesi veya gelir belgesi eksik → İşveren yazısı + son 3 aylık maaş bordrosu sunun",
+      "Belge eksikliği var (en titiz Schengen) → iDATA kontrol listesini nokta nokta tamamlayın",
+      "İş seyahatinde Alman şirketten davet mektubu yok → Davet mektubunu Almanya'dan alın",
+      "Türkiye'deki bağ belgesi yetersiz → Tapu + iş sözleşmesi + vergi kaydı ekleyin",
+    ],
+    coverGradient: ["#000000", "#DD0000"],
+    cascadeFriendly: true,
   },
   {
     code: "ita",
@@ -435,6 +607,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "2 fotoğraf", "Sigorta (min. 30.000€)", "Konaklama belgesi", "Uçuş rezervasyonu", "Banka ekstresi", "Gelir belgesi"],
     processingTime: "10-15 iş günü",
     avgWait: "25-45 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Standart Schengen kriterleri (günlük 70-100€ karşılığı). Çok şehirli tur için tüm destinasyonlar için konaklama belgesi ve yeterli bütçe gösterilmeli.",
+    rejectionReasons: [
+      "Çok şehirli tur için güzergah belgesi eksik → Roma, Floransa, Venedik için ayrı plan sunun",
+      "Parmak izi için merkeze gelinmedi → İlk başvuruda fiziksel katılım zorunlu",
+      "Finansal yeterlilik yetersiz → Günlük harcama bütçesini belgeleyin",
+      "Konaklama belgesi eksik veya geçici → Kesinleştirilmiş rezervasyon sunun",
+    ],
+    coverGradient: ["#009246", "#CE2B37"],
+    cascadeFriendly: true,
   },
 
   // ── Kosmos Vize ───────────────────────────────────────────
@@ -458,6 +639,14 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport (3 ay geçerli)", "2 biyometrik fotoğraf", "Sigorta (min. 30.000€)", "Uçuş rezervasyonu", "Otel / kiralık villa belgesi", "Banka ekstresi (3 ay)", "Gelir belgesi"],
     processingTime: "3-7 iş günü",
     avgWait: "10-30 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Yunanistan görece esnek; günlük 50-80€ karşılığı bakiye genellikle yeterlidir. Ada tatili için villa/tekne kiralaması belgesi bütçeye eklenmelidir. İlk Schengen için mükemmel seçim.",
+    rejectionReasons: [
+      "Her ada için ayrı konaklama belgesi sunulmadı → Ada başına rezervasyon hazırlayın",
+      "Çok girişli vize talebi için önceki Schengen geçmişi yetersiz → İlk başvuruda tekli vize alın",
+      "Finansal yeterlilik düşük → Banka özeti + gelir belgesini birlikte sunun",
+      "Sigorta Yunanistan adalarını kapsamıyor → Tüm Schengen geneli sigortası seçin",
+    ],
+    coverGradient: ["#0D5EAF", "#FFFFFF"],
   },
 
   // ── BLS International ─────────────────────────────────────
@@ -481,6 +670,15 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "2 biyometrik fotoğraf", "Başvuru formu", "Sigorta (min. 30.000€)", "Uçuş & konaklama rezervasyonu", "Banka ekstresi", "Gelir belgesi"],
     processingTime: "10-15 iş günü",
     avgWait: "30-50 gün",
+    bankRequirements: "Son 3 aylık banka özeti. BLS International titiz inceleme yapar. Günlük 100€ karşılığı bakiye önerilir. Sigorta poliçesinin İspanya'yı kapsadığına dair İngilizce onay belgesi zorunludur.",
+    rejectionReasons: [
+      "Biyometrik parmak izi için merkeze gelinmedi → Fiziksel başvuru zorunludur",
+      "Yaz sezonunda çok geç başvuru yapıldı → En az 3 ay önceden harekete geçin",
+      "Günlük güzergah planı eksik (çok şehirli tur) → Barselona, Sevilla, Granada için ayrı plan ekleyin",
+      "Finansal yeterlilik yetersiz → Günlük 100€ karşılığı bakiye görünür olmalı",
+      "Sigorta belgesi İngilizce onay içermiyor → İngilizce onaylı poliçe sunun",
+    ],
+    coverGradient: ["#AA151B", "#F1BF00"],
   },
   {
     code: "svk",
@@ -500,6 +698,13 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Fotoğraf", "Sigorta", "Konaklama belgesi", "Uçuş rezervasyonu", "Finansal belgeler"],
     processingTime: "7-10 iş günü",
     avgWait: "10-20 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Standart Schengen kriterleri. Slovakya uygun maliyetli; günlük 50-60€ karşılığı bakiye yeterlidir. İlk Schengen için kolay ve hızlı ülkelerden biri.",
+    rejectionReasons: [
+      "Konaklama belgesi eksik veya onaysız → Kesinleştirilmiş rezervasyon sunun",
+      "Finansal yeterlilik yetersiz → Bakiye ve gelir belgesini birlikte sunun",
+      "Seyahat planı belirsiz → Bratislava ve Viyana için ayrı güzergah belirtin",
+    ],
+    coverGradient: ["#FFFFFF", "#0B4EA2"],
   },
 
   // ── AS Visa Solutions ─────────────────────────────────────
@@ -522,6 +727,14 @@ export const COUNTRIES: Country[] = [
     requirements: ["Pasaport", "Fotoğraf", "Sigorta", "Konaklama belgesi", "Uçuş rezervasyonu", "Banka ekstresi", "Gelir belgesi"],
     processingTime: "7-10 iş günü",
     avgWait: "10-25 gün",
+    bankRequirements: "Son 3 aylık banka özeti. Macaristan uygun maliyetli; günlük 50-70€ karşılığı bakiye yeterlidir. AS Visa Solutions titiz belge incelemesi yapar — eksik belge ret nedenidir.",
+    rejectionReasons: [
+      "Konaklama veya güzergah planı eksik → Budapeşte için gün bazlı plan sunun",
+      "Finansal yeterlilik yetersiz → Gelir belgesi + banka özetini birlikte sunun",
+      "Türkiye'deki bağ belgesi sunulmadı → İşveren yazısı veya mülk belgesi ekleyin",
+      "Seyahat amacı belirsiz → Aktivite ve turizm planını detaylandırın",
+    ],
+    coverGradient: ["#CE2939", "#436F4D"],
   },
 ];
 

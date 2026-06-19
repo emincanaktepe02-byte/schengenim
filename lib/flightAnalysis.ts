@@ -7,26 +7,42 @@ const ORIGINS = [
   { code: "ADB", city: "İzmir" },
 ];
 
-// Top Schengen destinations with Turkish city names
+// All Schengen country destinations with Turkish city names
 const DESTINATIONS = [
-  { code: "ATH", city: "Atina" },
-  { code: "AMS", city: "Amsterdam" },
-  { code: "BCN", city: "Barselona" },
-  { code: "CDG", city: "Paris" },
-  { code: "FCO", city: "Roma" },
-  { code: "MAD", city: "Madrid" },
-  { code: "VIE", city: "Viyana" },
-  { code: "ZRH", city: "Zürih" },
-  { code: "MUC", city: "Münih" },
-  { code: "BER", city: "Berlin" },
-  { code: "PRG", city: "Prag" },
-  { code: "WAW", city: "Varşova" },
-  { code: "BRU", city: "Brüksel" },
-  { code: "LIS", city: "Lizbon" },
-  { code: "CPH", city: "Kopenhag" },
-  { code: "OSL", city: "Oslo" },
-  { code: "ARN", city: "Stockholm" },
-  { code: "HEL", city: "Helsinki" },
+  { code: "ATH", city: "Atina" },        // Yunanistan
+  { code: "AMS", city: "Amsterdam" },     // Hollanda
+  { code: "BCN", city: "Barselona" },     // İspanya (alternatif)
+  { code: "CDG", city: "Paris" },         // Fransa
+  { code: "FCO", city: "Roma" },          // İtalya
+  { code: "MXP", city: "Milano" },        // İtalya (alternatif)
+  { code: "MAD", city: "Madrid" },        // İspanya
+  { code: "VIE", city: "Viyana" },        // Avusturya
+  { code: "ZRH", city: "Zürih" },         // İsviçre
+  { code: "MUC", city: "Münih" },         // Almanya (alternatif)
+  { code: "BER", city: "Berlin" },        // Almanya
+  { code: "FRA", city: "Frankfurt" },     // Almanya (ana)
+  { code: "PRG", city: "Prag" },          // Çekya
+  { code: "WAW", city: "Varşova" },       // Polonya
+  { code: "KRK", city: "Kraków" },        // Polonya (alternatif)
+  { code: "BRU", city: "Brüksel" },       // Belçika
+  { code: "LIS", city: "Lizbon" },        // Portekiz
+  { code: "CPH", city: "Kopenhag" },      // Danimarka
+  { code: "OSL", city: "Oslo" },          // Norveç
+  { code: "ARN", city: "Stockholm" },     // İsveç
+  { code: "HEL", city: "Helsinki" },      // Finlandiya
+  { code: "BUD", city: "Budapeşte" },     // Macaristan
+  { code: "BTS", city: "Bratislava" },    // Slovakya
+  { code: "TLL", city: "Tallinn" },       // Estonya
+  { code: "RIX", city: "Riga" },          // Letonya
+  { code: "VNO", city: "Vilnius" },       // Litvanya
+  { code: "LJU", city: "Ljubljana" },     // Slovenya
+  { code: "ZAG", city: "Zagreb" },        // Hırvatistan
+  { code: "DBV", city: "Dubrovnik" },     // Hırvatistan (alternatif)
+  { code: "SOF", city: "Sofya" },         // Bulgaristan
+  { code: "OTP", city: "Bükreş" },        // Romanya
+  { code: "MLA", city: "Malta" },         // Malta
+  { code: "LUX", city: "Lüksemburg" },    // Lüksemburg
+  { code: "KEF", city: "Reykjavik" },     // İzlanda
 ];
 
 // Returns next N months as "YYYY-MM" strings
