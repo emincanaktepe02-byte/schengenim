@@ -37,7 +37,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#fffef0]/96 backdrop-blur-md border-b border-[#004449]/8"
+          ? "bg-[#111111]/92 backdrop-blur-md border-b border-white/8"
           : "bg-transparent"
       }`}
       style={{ fontFamily: "Inter, 'General Sans', sans-serif" }}
@@ -46,9 +46,9 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-[#004449] text-sm font-semibold tracking-wide">
+          <span className="text-white text-sm font-semibold tracking-wide">
             schengenim
-            <span style={{ color: "#483cff" }}>.com</span>
+            <span style={{ color: "#d7ffc2" }}>.com</span>
           </span>
         </Link>
 
@@ -58,7 +58,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-[13px] text-[#004449]/50 hover:text-[#004449] transition-colors font-medium tracking-wide"
+              className="text-[13px] text-white/60 hover:text-white transition-colors font-medium tracking-wide"
             >
               {l.label}
             </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdown(!dropdown)}
-              className="flex items-center gap-1 text-[13px] text-[#004449]/50 hover:text-[#004449] transition-colors font-medium tracking-wide"
+              className="flex items-center gap-1 text-[13px] text-white/60 hover:text-white transition-colors font-medium tracking-wide"
             >
               Ülkeler
               <ChevronDown
@@ -128,7 +128,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-[#004449]/60 hover:text-[#004449] transition-colors"
+          className="md:hidden text-white/60 hover:text-white transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}

@@ -1,113 +1,173 @@
 "use client";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const PHOTOS = [
+  { src: "/Iskocya.jpg",         alt: "İskoçya manzarası"      },
+  { src: "/Sunset-Barcelona.jpg",alt: "Barcelona gün batımı"   },
+  { src: "/Oslo-Opera.jpg",      alt: "Oslo Opera Binası"      },
+  { src: "/Colosseum-Italy.jpg", alt: "Colosseum, İtalya"      },
+  { src: "/Paris2.jpg",          alt: "Paris, Fransa"          },
+  { src: "/Amsterdam2.jpg",      alt: "Amsterdam, Hollanda"    },
+  { src: "/Venedik.jpg",         alt: "Venedik, İtalya"        },
+  { src: "/Prag.jpg",            alt: "Prag, Çekya"            },
+  { src: "/Kopenhag.jpg",        alt: "Kopenhag, Danimarka"    },
+];
+
+const INTERVAL = 5000;
 
 export default function Hero() {
-  return (
-    <section className="bg-[#fffef0] pt-16 overflow-hidden" aria-label="Ana Sayfa Hero">
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-      {/* ── TEXT BLOCK ── */}
-      <motion.div
-        className="max-w-[1200px] mx-auto px-6 pt-20 pb-10 flex flex-col items-center text-center gap-6"
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, ease: EASE }}
+  const next = useCallback(() => {
+    setIndex((i) => (i + 1) % PHOTOS.length);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(next, INTERVAL);
+    return () => clearInterval(id);
+  }, [next, paused]);
+
+  return (
+    <section
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      aria-label="Ana Sayfa Hero"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+
+      {/* ── SLIDESHOW BACKGROUND ── */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={index}
+          className="absolute inset-0 z-0"
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1.0 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            opacity: { duration: 1.4, ease: "easeInOut" },
+            scale:   { duration: INTERVAL / 1000 + 1.4, ease: "linear" },
+          }}
+        >
+          <Image
+            src={PHOTOS[index].src}
+            alt={PHOTOS[index].alt}
+            fill
+            className="object-cover object-center"
+            priority={index === 0}
+            sizes="100vw"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* ── OVERLAY (gradient, dark bottom for legibility) ── */}
+      <div className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.28) 50%, rgba(0,0,0,0.68) 100%)",
+        }}
+      />
+
+      {/* ── CONTENT ── */}
+      <div
+        className="relative z-[2] text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-6 select-none"
         style={{ fontFamily: "Inter, 'General Sans', sans-serif" }}
       >
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#d7ffc2] text-[#004449] text-[11px] font-semibold tracking-[0.14em] uppercase px-4 py-2 rounded-full">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.55 }}
+          className="inline-flex items-center gap-2 bg-[#d7ffc2]/90 text-[#004449] text-[11px] font-semibold tracking-[0.14em] uppercase px-4 py-2 rounded-full backdrop-blur-sm"
+        >
           <span className="w-1.5 h-1.5 rounded-full bg-[#004449] animate-pulse" />
           Türkiye&apos;nin Schengen Vize Rehberi · 2026
-        </div>
+        </motion.div>
 
         {/* Display headline */}
-        <h1
-          className="font-semibold leading-[1.06] text-[#004449] max-w-2xl"
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.32, duration: 0.65 }}
+          className="font-semibold leading-[1.06] text-white"
           style={{
-            fontSize: "clamp(2.6rem, 6.5vw, 5rem)",
+            fontSize: "clamp(2.8rem, 7vw, 5.2rem)",
             letterSpacing: "0.04em",
+            textShadow: "0 2px 20px rgba(0,0,0,0.4)",
           }}
         >
           Artık{" "}
-          <span>
-            Schengen<span style={{ color: "#483cff" }}>im</span>
-          </span>{" "}
-          <span style={{ color: "rgba(0,68,73,0.40)", fontWeight: 400, fontStyle: "italic" }}>
-            var.
-          </span>
-        </h1>
+          <span style={{ color: "#d7ffc2" }}>Schengen</span>
+          <span style={{ color: "#483cff" }}>im</span>{" "}
+          <span style={{ fontWeight: 400, fontStyle: "italic", opacity: 0.75 }}>var.</span>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p
-          className="text-[18px] text-[#004449]/55 font-normal leading-relaxed max-w-xl"
-          style={{ letterSpacing: "0.02em" }}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.44, duration: 0.6 }}
+          className="text-[17px] text-white/70 font-normal leading-relaxed max-w-lg"
+          style={{ letterSpacing: "0.02em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
         >
-          26 Schengen ülkesi için vize rehberi, topluluk randevuları ve anlık uçuş fırsatları.{" "}
-          <span className="text-[#004449]/80 font-medium">Tamamen ücretsiz.</span>
-        </p>
+          26 ülke vize rehberi · Topluluk randevuları · Anlık uçuş fırsatları
+        </motion.p>
 
         {/* CTA buttons */}
-        <div className="flex flex-wrap justify-center gap-3 pt-1">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.56, duration: 0.55 }}
+          className="flex flex-wrap justify-center gap-3 pt-1"
+        >
           <Link
             href="#guide"
             className="px-8 py-3.5 rounded-[900px] bg-[#483cff] text-white text-[13px] font-semibold tracking-[0.06em] transition-colors hover:bg-[#3b31e0]"
-            style={{ boxShadow: "0 4px 20px rgba(72,60,255,0.28)" }}
+            style={{ boxShadow: "0 4px 24px rgba(72,60,255,0.45)" }}
           >
             Ülke Rehberi →
           </Link>
           <Link
             href="#flights"
-            className="px-8 py-3.5 rounded-[900px] border border-[#004449]/25 text-[#004449] text-[13px] font-semibold tracking-[0.06em] transition-all hover:border-[#004449]/55 hover:bg-[#004449]/5"
+            className="px-8 py-3.5 rounded-[900px] border border-white/40 text-white text-[13px] font-semibold tracking-[0.06em] transition-all hover:border-white/80 hover:bg-white/10 backdrop-blur-sm"
           >
             ✈ Uçuş Fırsatları
           </Link>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      {/* ── LANDSCAPE PHOTO ── */}
-      <motion.div
-        className="max-w-[1200px] mx-auto px-6 pb-0"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
-      >
-        <div
-          className="relative w-full overflow-hidden"
-          style={{ aspectRatio: "16/7", borderRadius: "24px 24px 0 0" }}
-        >
-          <Image
-            src="/Iskocya.jpg"
-            alt="Avrupa manzarası"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="(max-width: 768px) 100vw, 1200px"
+      {/* ── PHOTO DOTS ── */}
+      <div className="absolute bottom-8 left-0 right-0 z-[2] flex justify-center gap-2">
+        {PHOTOS.map((p, i) => (
+          <button
+            key={p.src}
+            onClick={() => setIndex(i)}
+            aria-label={p.alt}
+            className="transition-all duration-300"
+            style={{
+              width:  i === index ? "24px" : "6px",
+              height: "6px",
+              borderRadius: "9999px",
+              background: i === index ? "#ffffff" : "rgba(255,255,255,0.35)",
+            }}
           />
+        ))}
+      </div>
 
-          {/* Subtle gradient at bottom for transition to dark sections */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, transparent, rgba(17,17,17,0.65))" }}
-          />
-
-          {/* Stats overlaid on photo */}
-          <div className="absolute bottom-0 inset-x-0 px-8 pb-7 flex gap-10">
-            {[
-              { n: "26",        l: "ülke rehberi"   },
-              { n: "Ücretsiz",  l: "her zaman"      },
-              { n: "CASCADE",   l: "vize kademeleme" },
-            ].map((s) => (
-              <div key={s.n} className="text-white">
-                <p className="font-semibold text-sm" style={{ fontFamily: "Inter" }}>{s.n}</p>
-                <p className="text-white/55 text-[11px] font-medium tracking-wide mt-0.5">{s.l}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
+      {/* ── PROGRESS BAR ── */}
+      {!paused && (
+        <motion.div
+          key={`bar-${index}`}
+          className="absolute bottom-0 left-0 z-[3] h-[2px] bg-white/60"
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: INTERVAL / 1000, ease: "linear" }}
+        />
+      )}
 
     </section>
   );
